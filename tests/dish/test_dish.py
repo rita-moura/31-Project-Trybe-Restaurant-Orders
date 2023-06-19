@@ -1,19 +1,19 @@
+import pytest
 from src.models.dish import Dish  # noqa: F401, E261, E501
 from src.models.ingredient import Ingredient
-import pytest
 
 
 # Req 2
 def test_dish():
-    dish_lasanha = Dish('lasanha', 28.99)
     dish_empada = Dish('empada', 8.99)
-    dish_invalid = Dish('')
+    dish_lasanha = Dish('lasanha', 28.99)
+
+    assert dish_empada.name == 'empada'
 
     assert dish_lasanha == dish_lasanha
     assert dish_lasanha != dish_empada
-    assert dish_invalid.name == ''
 
-    assert dish_empada.__repr__() == "Dish('empada', R$8,99)"
+    assert dish_empada.__repr__() == "Dish('empada', R$8.99)"
 
     assert dish_empada.__hash__() == dish_empada.__hash__()
     assert dish_empada.__hash__() != dish_lasanha.__hash__()
@@ -35,7 +35,7 @@ def test_dish():
     assert dish_lasanha.get_restrictions() != set('')
 
     with pytest.raises(TypeError):
-        Dish('lasanha', 'R$20,99')
+        Dish('lasanha', 'R$28,99')
 
-    with pytest.raises(TypeError):
-        Dish('lasanha', '-20,99')
+    with pytest.raises(ValueError):
+        Dish('lasanha', -1)
