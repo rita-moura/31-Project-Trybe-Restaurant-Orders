@@ -5,8 +5,8 @@ import pytest
 
 # Req 2
 def test_dish():
-    dish_lasanha = Dish('lasanha', 28,99)
-    dish_empada = Dish('empada', 8,99)
+    dish_lasanha = Dish('lasanha', 28.99)
+    dish_empada = Dish('empada', 8.99)
     dish_invalid = Dish('')
 
     assert dish_lasanha == dish_lasanha
@@ -24,12 +24,13 @@ def test_dish():
     dish_lasanha.add_ingredient_dependency(Ingredient('molho de tomate'), 1)
     dish_lasanha.add_ingredient_dependency(Ingredient('carne moída'), 400)
 
-    assert dish_lasanha.get_ingredients() == set([Ingredient('macarrão'),
-                                                  Ingredient('queijo'),
-                                                  Ingredient('presunto'),
-                                                  Ingredient('molho de tomate'),
-                                                  Ingredient('carne moída'),
-                                                  ])
+    assert dish_lasanha.get_ingredients() == set([
+        Ingredient('macarrão'),
+        Ingredient('queijo'),
+        Ingredient('presunto'),
+        Ingredient('molho de tomate'),
+        Ingredient('carne moída'),
+        ])
 
     assert dish_lasanha.get_restrictions() != set('')
 
@@ -38,4 +39,3 @@ def test_dish():
 
     with pytest.raises(TypeError):
         Dish('lasanha', '-20,99')
-
