@@ -7,6 +7,7 @@ from src.models.ingredient import Ingredient
 class MenuData:
     def __init__(self, source_path: str) -> None:
         self.dishes = set()
+        dishes_map = {}
 
         with open(source_path, encoding='utf8', newline='') as file:
             reader_data = csv.DictReader(file)
@@ -14,13 +15,18 @@ class MenuData:
             for row in reader_data:
                 dish_name = row['dish']
                 dish_price = float(row['price'])
-                dish_ingredient = row['ingredient']
-                dish_recipe_amount = int(row['recipe_amount'])
+                ingredient_name = row['ingredient']
+                recipe_amount = int(row['recipe_amount'])
 
-                self.dishes.add(Dish(dish_name, dish_price))
+                # Encontra o prato existente ou cria um novo
+                dish = dishes_map.get(dish_name)
+                if dish is None:
+                    dish = Dish(dish_name, dish_price)
+                    dishes_map[dish_name] = dish
+                    self.dishes.add(dish)
 
-                dish_next = next(iter(self.dishes))
-
-                dish_next.add_ingredient_dependency(
-                    Ingredient(dish_ingredient),
-                    dish_recipe_amount)
+                # Adiciona o ingrediente ao prato correto
+                dish.add_ingredient_dependency(
+                    Ingredient(ingredient_name),
+                    recipe_amount
+                )
