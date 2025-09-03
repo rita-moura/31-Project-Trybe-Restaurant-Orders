@@ -22,24 +22,29 @@ O objetivo principal é implementar uma classe que centraliza e gerencia as info
 ## 🛠️ Tecnologias e Conceitos Aplicados
 
 - **Python 3**
+- **FastAPI**
 - **Programação Orientada a Objetos (POO)**
 - **Estruturas de Dados:** Dicionários e Conjuntos (sets) para otimizar a busca e o armazenamento de dados.
-- **`pypubsub`**: Biblioteca utilizada para implementar o padrão de projeto Publish-Subscribe, permitindo um baixo acoplamento entre os componentes do sistema.
 - **`pytest`**: Para a execução dos testes automatizados.
 
 ## 📂 Estrutura do Projeto
 
+- **`data/`**: Contém os dados base para o cardápio e inventário.
 - **`src/`**: Pasta contendo todo o código-fonte desenvolvido para a solução do projeto.
 - **`tests/`**: Pasta com os testes.
-- **`setup.py`**: Arquivo de configuração para instalação das dependências do projeto.
+- **`dev-requirements.txt`**: Dependências de desenvolvimento.
+- **`requirements.txt`**: Dependências do projeto.
+- **`init.sh`**: Script para setup do ambiente.
+- **`test.sh`**: Script para execução dos testes.
+- **`pyproject.toml`**: Arquivo de configuração do projeto.
 
 
 ## 🚀 Instalação e Execução
 
 1.  **Clone o repositório:**
     ```bash
-    git clone git@github.com:rita-moura/31-Project-Trybe-Restaurant-Orders.git
-    cd 31-Project-Trybe-Restaurant-Orders
+    git clone git@github.com:rita-moura/Project_Restaurant_Orders.git
+    cd Project_Restaurant_Orders
     ```
 
 2.  **Crie e ative um ambiente virtual e instale as dependecias:**
@@ -58,4 +63,3 @@ Para verificar se a sua solução atende a todos os requisitos, execute os teste
 
 ```bash
 bash test.sh
-```
