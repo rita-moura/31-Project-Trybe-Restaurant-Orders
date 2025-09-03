@@ -1,10 +1,15 @@
 from fastapi import FastAPI, HTTPException, Query, status
 
-from models.ingredient import Restriction
-from services.menu_builder import MenuBuilder
+from src.models.ingredient import Restriction
+from src.services.menu_builder import MenuBuilder
+from src.services.menu_data import MenuData
+from src.services.inventory_control import InventoryMapping
 
 app = FastAPI(title="Restaurante Chapa Quente")
-menu_builder = MenuBuilder()
+menu_builder = MenuBuilder(
+    MenuData("data/menu_base_data.csv"),
+    InventoryMapping("data/inventory_base_data.csv"),
+)
 
 
 restriction_options = {k: {"value": k} for k in Restriction._member_names_}
