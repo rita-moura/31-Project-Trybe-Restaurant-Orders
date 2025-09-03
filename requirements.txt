@@ -1,6 +1,6 @@
 -e .
 fastapi==0.92.0
 uvicorn==0.20.0
+pypubsub
 pytest
-fastapi
 
